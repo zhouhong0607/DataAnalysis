@@ -8,7 +8,7 @@ public class Effect {
 	private static final int POW_DRSRQ = 2;
 	private static final int POW_ERSRQ = 3;
 
-	private static final int POW_EPRB = 10;
+	private static final int POW_EPRB = 50;
 
 	private static final int POW_EULSINR = 3;
 
@@ -61,7 +61,8 @@ public class Effect {
 		eDlPlr = mr.getExpMrPlrDl();
 		eUlPlr = mr.getExpMrPlrUl();
 		// SInr影响程度
-		eUlSinr = Math.pow(1 - mr.getIndexExpSinrUl() / 37, POW_EULSINR);
+		double curSinr=1.0 - mr.getIndexExpSinrUl() / 37.0;
+		eUlSinr = Math.pow(curSinr, POW_EULSINR);
 
 		eDl = eRsrp * 0.3 + eRsrq * 0.3 + ePrb * 0.2 + eDlPlr * 0.2;
 		eUl = eRsrp * 0.3 + eRsrq * 0.3 + eUlSinr * 0.2 + eUlPlr * 0.2;
@@ -247,9 +248,17 @@ public class Effect {
 	 */
 
 	public static void main(String[] args) throws Exception {
-		String rsrp = "-76 -76 -74 -74 -74 -74 -74 -74 -74 -74 -75 -74 -74 -77 -77 -75 -75 -75 -75 -75 -75 -75 -75 -75 -81 -81 -81 -81 -81 -77 -77 -77 -77 -76 -76 -76 -76 -76 -76 -76 -76 -76 -74 -74 -74 -74 -74 -74 -74 -75 -74 -74 -74 -77 -77 -75 -75 -75 -75 -75 -75 -75 -75 -75 -81 -81 -81 -81 -81 -77 -77 -77 -77 -76 -76 -76 -76 -76 -76 -76 -74 -74 -74 -77 -77 -75 -75 -75 -75 -75 -75 -75 -75 -75 -81 -81 -81 -81 -81 -77";
-		String rsrq = "-9 -9 -7 -7 -8 -8 -8 -8 -8 -10 -8 -10 -10 -8 -8 -8 -8 -8 -8 -8 -8 -8 -7 -7 -8 -8 -8 -8 -8 -8 -8 -8 -8 -9 -9 -9 -9 -9 -9 -9 -9 -9 -7 -7 -8 -8 -8 -8 -8 -8 -10 -10 -10 -8 -8 -8 -8 -8 -8 -8 -8 -8 -7 -7 -8 -8 -8 -8 -8 -8 -8 -8 -8 -9 -9 -9 -9 -9 -9 -9 -10 -10 -10 -8 -8 -8 -8 -8 -8 -8 -8 -8 -7 -7 -8 -8 -8 -8 -8 -8";
-		UeData ueData = new UeData(rsrp, rsrq);
+		String[] rsrp = {"-76 -76 -74 -74 -74 -74 -74 -74 -74 -74 -75 -74 -74 -77 -77 -75 -75 -75 -75 -75 -75 -75 -75 -75 -81 -81 -81 -81 -81 -77 -77 -77 -77 -76 -76 -76 -76 -76 -76 -76 -76 -76 -74 -74 -74 -74 -74 -74 -74 -75 -74 -74 -74 -77 -77 -75 -75 -75 -75 -75 -75 -75 -75 -75 -81 -81 -81 -81 -81 -77 -77 -77 -77 -76 -76 -76 -76 -76 -76 -76 -74 -74 -74 -77 -77 -75 -75 -75 -75 -75 -75 -75 -75 -75 -81 -81 -81 -81 -81 -77"
+						,"-107 -107 -109 -109 -109 -109 -108 -108 -108 -108"
+						,"-111 -111 -110 -110 -110 -113 -113 -113 -111 -111"
+				
+		};
+		String[] rsrq = {"-9 -9 -7 -7 -8 -8 -8 -8 -8 -10 -8 -10 -10 -8 -8 -8 -8 -8 -8 -8 -8 -8 -7 -7 -8 -8 -8 -8 -8 -8 -8 -8 -8 -9 -9 -9 -9 -9 -9 -9 -9 -9 -7 -7 -8 -8 -8 -8 -8 -8 -10 -10 -10 -8 -8 -8 -8 -8 -8 -8 -8 -8 -7 -7 -8 -8 -8 -8 -8 -8 -8 -8 -8 -9 -9 -9 -9 -9 -9 -9 -10 -10 -10 -8 -8 -8 -8 -8 -8 -8 -8 -8 -7 -7 -8 -8 -8 -8 -8 -8"
+						,"-11 -11 -12 -12 -12 -12 -13 -13 -12 -12 -12 -12"
+						,"-12 -12 -13 -13 -13 -15 -15 -15 -15 -13"
+				
+		};
+		UeData ueData = new UeData(rsrp[2], rsrq[2]);
 		MrData mrData = new MrData();
 		Effect effect = new Effect(ueData, mrData);
 		System.out.println(ueData.toString());
