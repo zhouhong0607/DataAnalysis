@@ -38,10 +38,10 @@ public class UeData {
 	public String toString()
 	{
 		StringBuilder sBuilder=new StringBuilder();
-		sBuilder.append("UE_RSRP期望"+expRsrp+"\n");
-		sBuilder.append("UE_RSRP期望区间"+indexRsrp+"\n");
-		sBuilder.append("UE_RSRQ期望"+expRsrq+"\n");
-		sBuilder.append("UE_RSRQ期望区间"+indexRsrq+"\n");
+		sBuilder.append("UE_RSRP平均值"+expRsrp+"\n");
+		sBuilder.append("UE_RSRP平均值区间"+indexRsrp+"\n");
+		sBuilder.append("UE_RSRQ平均值"+expRsrq+"\n");
+		sBuilder.append("UE_RSRQ平均值区间"+indexRsrq+"\n");
 		return sBuilder.toString();
 		
 	}

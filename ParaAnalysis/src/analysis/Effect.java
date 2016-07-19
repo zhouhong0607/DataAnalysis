@@ -2,17 +2,17 @@ package analysis;
 
 public class Effect {
 	// 对应的幂次
-	private static final int POW_DRSRP = 2;
-	private static final int POW_ERSRP = 3;
+	private static final double POW_DRSRP = 2;
+	private static final double POW_ERSRP = 1.0/3.0;
 
-	private static final int POW_DRSRQ = 2;
-	private static final int POW_ERSRQ = 3;
+	private static final double POW_DRSRQ = 2;
+	private static final double POW_ERSRQ = 1.0/3.0;
 
-	private static final int POW_EPRB = 50;
+	private static final double POW_EPRB = 50;
 
-	private static final int POW_EULSINR = 3;
+	private static final double POW_EULSINR = 3;
 
-	private static final int PRB_NUM_ALL = 100;// 总连接数
+	private static final double PRB_NUM_ALL = 100;// 总连接数
 	private UeData ueData;
 	private MrData mrData;
 
@@ -46,14 +46,14 @@ public class Effect {
 		double curDrsrp2 = Math.pow((47.0 - mr.getIndexExpRsrp()) / 48, POW_DRSRP);
 		dRsrp = 0.5 * curDrsrp1 / 48 * curDrsrp2;
 		rRsrp = mr.getMrRsrp()[ue.getIndexRsrp()] / mr.getSumMrRsrp();
-		eRsrp = Math.pow(1 - rRsrp, POW_ERSRP) * dRsrp;
+		eRsrp = (1-rRsrp)*Math.pow(dRsrp, POW_ERSRP);
 		// RSRP影响程度计算
 		double curDrsrq1 = (mr.getIndexExpRsrq() - ue.getIndexRsrq())
 				+ Math.abs(mr.getIndexExpRsrq() - ue.getIndexRsrq());
 		double curDrsrq2 = Math.pow((17.0 - mr.getIndexExpRsrp()) / 18, POW_DRSRQ);
 		dRsrq = 0.5 * curDrsrq1 / 18 * curDrsrq2;
 		rRsrq = mr.getMrRsrq()[ue.getIndexRsrq()] / mr.getSumMrRsrq();
-		eRsrq = Math.pow(1 - rRsrq, POW_ERSRQ) * dRsrq;
+		eRsrq = (1-rRsrq)*Math.pow(dRsrq, POW_ERSRQ);
 		// PRB影响程度计算
 		rPrbNum = mr.getExpMrPrbNum() / PRB_NUM_ALL;
 		ePrb = Math.pow(1 - rPrbNum, POW_EPRB);
@@ -78,7 +78,7 @@ public class Effect {
 		this.rPrbNum = rPrbNum;
 	}
 
-	public static int getPrbNumAll() {
+	public static double getPrbNumAll() {
 		return PRB_NUM_ALL;
 	}
 
@@ -202,27 +202,27 @@ public class Effect {
 		this.eUlSinr = eUlSinr;
 	}
 
-	public static int getPowDrsrp() {
+	public static double getPowDrsrp() {
 		return POW_DRSRP;
 	}
 
-	public static int getPowErsrp() {
+	public static double getPowErsrp() {
 		return POW_ERSRP;
 	}
 
-	public static int getPowDrsrq() {
+	public static double getPowDrsrq() {
 		return POW_DRSRQ;
 	}
 
-	public static int getPowErsrq() {
+	public static double getPowErsrq() {
 		return POW_ERSRQ;
 	}
 
-	public static int getPowEprb() {
+	public static double getPowEprb() {
 		return POW_EPRB;
 	}
 
-	public static int getPowEulsinr() {
+	public static double getPowEulsinr() {
 		return POW_EULSINR;
 	}
 
