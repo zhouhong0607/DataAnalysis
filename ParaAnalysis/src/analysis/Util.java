@@ -79,8 +79,18 @@ public class Util
 			return (int)(10.0+value)+1;
 		}
 	}
-	
-	
+	/**
+	 * 计算PRB对应区间
+	 * @param value
+	 * @return
+	 */
+	public static int  getPrbNumIndex(double value)
+	{
+		if(value<=0) return 0;
+		else {
+			return (int)(value-1)/10+1;
+		}
+	}
 	
 	
 	
