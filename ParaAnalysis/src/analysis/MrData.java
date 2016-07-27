@@ -11,7 +11,7 @@ public class MrData
 {
 	private	double[] mrRsrp;
 	private	double[] mrRsrq;
-	private	double[] mrPrbNum;
+//	private	double[] mrPrbNum;
 	private	double[] mrPlrUl6;
 	private	double[] mrPlrUl8;
 	private	double[] mrPlrUl9;
@@ -21,14 +21,14 @@ public class MrData
 	private	double[] mrSinrUl;
 	private	double expMrRsrp;
 	private	double expMrRsrq;
-	private	double expMrPrbNum;
+//	private	double expMrPrbNum;
 	private	double expMrPlrUl;
 	private	double expMrPlrDl;
 	private	double expMrSinrUl;
 	private	int indexExpRsrp;
 	private	int indexExpRsrq;
 	private	int indexExpSinrUl;
-	private int indexExpPrbNum;
+//	private int indexExpPrbNum;
 	private double sumMrRsrp;//Rsrp的样本数量和
 	private double sumMrRsrq;//Rsrq同上
 	
@@ -40,8 +40,8 @@ public class MrData
 		sBuilder.append("MR_RSRP加权期望区间:"+indexExpRsrp+"\n");
 		sBuilder.append("MR_RSRQ加权期望:"+expMrRsrq+"\n");
 		sBuilder.append("MR_RSRQ加权期望区间:"+indexExpRsrq+"\n");
-		sBuilder.append("MR_PRB加权期望:"+expMrPrbNum+"\n");
-		sBuilder.append("MR_PRB加权期望区间:"+indexExpPrbNum+"\n");
+//		sBuilder.append("MR_PRB加权期望:"+expMrPrbNum+"\n");
+//		sBuilder.append("MR_PRB加权期望区间:"+indexExpPrbNum+"\n");
 		
 		
 		sBuilder.append("上行MR_PLR加权期望:"+expMrPlrUl+"\n");
@@ -111,9 +111,9 @@ public class MrData
 							case "MR.RSRQ":
 								this.setMrRsrq(strToIntArr);
 								break;
-							case "MR.PDSCHPRBNum":
-								this.setMrPrbNum(strToIntArr);
-								break;
+//							case "MR.PDSCHPRBNum":
+//								this.setMrPrbNum(strToIntArr);
+//								break;
 							case "MR.PacketLossRateULQci6":
 								this.setMrPlrUl6(strToIntArr);
 								break;
@@ -175,8 +175,8 @@ public class MrData
 		indexExpRsrp=Util.getRsrpIndex(expMrRsrp);
 		expMrRsrq=Util.calRsrqExp(mrRsrq);
 		indexExpRsrq=Util.getRsrqIndex(expMrRsrq);
-		expMrPrbNum=Util.calPrbExp(mrPrbNum);
-		indexExpPrbNum=Util.getPrbNumIndex(expMrPrbNum);
+//		expMrPrbNum=Util.calPrbExp(mrPrbNum);
+//		indexExpPrbNum=Util.getPrbNumIndex(expMrPrbNum);
 		expMrPlrUl=Util.calPlrExp(mrPlrUl6, mrPlrUl8, mrPlrUl9);
 		expMrPlrDl=Util.calPlrExp(mrPlrDl6, mrPlrDl8, mrPlrDl9);
 		expMrSinrUl=Util.calUlSinrExp(mrSinrUl);
@@ -210,15 +210,15 @@ public class MrData
 
 
 
-	public double getExpMrPrbNum() {
-		return expMrPrbNum;
-	}
-
-
-
-	public void setExpMrPrbNum(double expMrPrbNum) {
-		this.expMrPrbNum = expMrPrbNum;
-	}
+//	public double getExpMrPrbNum() {
+//		return expMrPrbNum;
+//	}
+//
+//
+//
+//	public void setExpMrPrbNum(double expMrPrbNum) {
+//		this.expMrPrbNum = expMrPrbNum;
+//	}
 
 
 
@@ -335,12 +335,12 @@ public class MrData
 	public void setMrRsrq(double[] mrRsrq) {
 		this.mrRsrq = mrRsrq;
 	}
-	public double[] getMrPrbNum() {
-		return mrPrbNum;
-	}
-	public void setMrPrbNum(double[] mrPrbNum) {
-		this.mrPrbNum = mrPrbNum;
-	}
+//	public double[] getMrPrbNum() {
+//		return mrPrbNum;
+//	}
+//	public void setMrPrbNum(double[] mrPrbNum) {
+//		this.mrPrbNum = mrPrbNum;
+//	}
 
 	public double[] getMrSinrUl() {
 		return mrSinrUl;
@@ -386,15 +386,15 @@ public class MrData
 
 
 
-	public int getIndexExpPrbNum()
-	{
-		return indexExpPrbNum;
-	}
-
-	public void setIndexExpPrbNum(int indexExpPrbNum)
-	{
-		this.indexExpPrbNum = indexExpPrbNum;
-	}
+//	public int getIndexExpPrbNum()
+//	{
+//		return indexExpPrbNum;
+//	}
+//
+//	public void setIndexExpPrbNum(int indexExpPrbNum)
+//	{
+//		this.indexExpPrbNum = indexExpPrbNum;
+//	}
 
 	public void setIndexExpSinrUl(int indexExpSinrUl)
 	{

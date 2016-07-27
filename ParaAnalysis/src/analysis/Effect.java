@@ -8,7 +8,7 @@ public class Effect {
 	private static final double POW_DRSRQ = 2;
 	private static final double POW_ERSRQ = 1.0/3.0;
 
-	private static final double POW_EPRB = 50;
+//	private static final double POW_EPRB = 50;
 
 	private static final double POW_EULSINR = 3;
 
@@ -24,8 +24,8 @@ public class Effect {
 	private double rRsrq;
 	private double eRsrq;
 
-	private double rPrbNum;
-	private double ePrb;
+//	private double rPrbNum;
+//	private double ePrb;
 
 	private double eDlPlr;
 
@@ -55,8 +55,8 @@ public class Effect {
 		rRsrq = mr.getMrRsrq()[ue.getIndexRsrq()] / mr.getSumMrRsrq();
 		eRsrq = (1-rRsrq)*Math.pow(dRsrq, POW_ERSRQ);
 		// PRB影响程度计算
-		rPrbNum = mr.getExpMrPrbNum() / PRB_NUM_ALL;
-		ePrb = Math.pow(1 - rPrbNum, POW_EPRB);
+//		rPrbNum = mr.getExpMrPrbNum() / PRB_NUM_ALL;
+//		ePrb = Math.pow(1 - rPrbNum, POW_EPRB);
 		// PLR影响程度
 		eDlPlr = mr.getExpMrPlrDl();
 		eUlPlr = mr.getExpMrPlrUl();
@@ -64,19 +64,20 @@ public class Effect {
 		double curSinr=1.0 - mr.getIndexExpSinrUl() / 37.0;
 		eUlSinr = Math.pow(curSinr, POW_EULSINR);
 
-		eDl = eRsrp * 0.3 + eRsrq * 0.3 + ePrb * 0.2 + eDlPlr * 0.2;
+//		eDl = eRsrp * 0.3 + eRsrq * 0.3 + ePrb * 0.2 + eDlPlr * 0.2;
+		eDl = eRsrp * 0.35 + eRsrq * 0.35 + eDlPlr * 0.3;
 		eUl = eRsrp * 0.3 + eRsrq * 0.3 + eUlSinr * 0.2 + eUlPlr * 0.2;
 
 		e = eUl * 0.3 + eDl * 0.7;
 	}
 
-	public double getrPrbNum() {
-		return rPrbNum;
-	}
-
-	public void setrPrbNum(double rPrbNum) {
-		this.rPrbNum = rPrbNum;
-	}
+//	public double getrPrbNum() {
+//		return rPrbNum;
+//	}
+//
+//	public void setrPrbNum(double rPrbNum) {
+//		this.rPrbNum = rPrbNum;
+//	}
 
 	public static double getPrbNumAll() {
 		return PRB_NUM_ALL;
@@ -170,13 +171,13 @@ public class Effect {
 		this.eRsrq = eRsrq;
 	}
 
-	public double getePrb() {
-		return ePrb;
-	}
-
-	public void setePrb(double ePrb) {
-		this.ePrb = ePrb;
-	}
+//	public double getePrb() {
+//		return ePrb;
+//	}
+//
+//	public void setePrb(double ePrb) {
+//		this.ePrb = ePrb;
+//	}
 
 	public double geteDlPlr() {
 		return eDlPlr;
@@ -218,9 +219,9 @@ public class Effect {
 		return POW_ERSRQ;
 	}
 
-	public static double getPowEprb() {
-		return POW_EPRB;
-	}
+//	public static double getPowEprb() {
+//		return POW_EPRB;
+//	}
 
 	public static double getPowEulsinr() {
 		return POW_EULSINR;
@@ -230,7 +231,7 @@ public class Effect {
 		StringBuilder sBuilder = new StringBuilder();
 		sBuilder.append("RSRP影响程度:" + eRsrp + "\n");
 		sBuilder.append("RSRQ影响程度:" + eRsrq + "\n");
-		sBuilder.append("UE PDSCH信道占用PRB数影响程度:" + ePrb + "\n");
+//		sBuilder.append("UE PDSCH信道占用PRB数影响程度:" + ePrb + "\n");
 		sBuilder.append("下行丢包率影响程度:" + eDlPlr + "\n");
 		sBuilder.append("上行丢包率影响程度:" + eUlPlr + "\n");
 		sBuilder.append("上行信干噪比影响程度:" + eUlSinr + "\n");
