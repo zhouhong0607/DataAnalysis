@@ -7,6 +7,9 @@ public class Effect {
 
 	private static final double POW_DRSRQ = 2;
 	private static final double POW_ERSRQ = 1.0/3.0;
+	
+	private static final double POW_EDLPLR = 1.0/2.0;
+	private static final double POW_EULPLR = 1.0/2.0;
 
 //	private static final double POW_EPRB = 50;
 
@@ -58,8 +61,8 @@ public class Effect {
 //		rPrbNum = mr.getExpMrPrbNum() / PRB_NUM_ALL;
 //		ePrb = Math.pow(1 - rPrbNum, POW_EPRB);
 		// PLR影响程度
-		eDlPlr = mr.getExpMrPlrDl();
-		eUlPlr = mr.getExpMrPlrUl();
+		eDlPlr =Math.pow(mr.getExpMrPlrDl(),POW_EDLPLR);
+		eUlPlr = Math.pow(mr.getExpMrPlrUl(), POW_EULPLR);
 		// SInr影响程度
 		double curSinr=1.0 - mr.getIndexExpSinrUl() / 37.0;
 		eUlSinr = Math.pow(curSinr, POW_EULSINR);
