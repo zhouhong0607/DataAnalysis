@@ -73,7 +73,7 @@ public class Util
 			return 0;
 		}else if (value>25)
 		{
-			return 17;
+			return 36;
 		}else
 		{
 			return (int)(10.0+value)+1;
