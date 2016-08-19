@@ -53,7 +53,7 @@ public class Effect {
 		// RSRP影响程度计算
 		double curDrsrq1 = (mr.getIndexExpRsrq() - ue.getIndexRsrq())
 				+ Math.abs(mr.getIndexExpRsrq() - ue.getIndexRsrq());
-		double curDrsrq2 = Math.pow((17.0 - mr.getIndexExpRsrp()) / 18, POW_DRSRQ);
+		double curDrsrq2 = Math.pow((17.0 - mr.getIndexExpRsrq()) / 18, POW_DRSRQ);
 		dRsrq = 0.5 * curDrsrq1 / 18 * curDrsrq2;
 		rRsrq = mr.getMrRsrq()[ue.getIndexRsrq()] / mr.getSumMrRsrq();
 		eRsrq = (1-rRsrq)*Math.pow(dRsrq, POW_ERSRQ);
